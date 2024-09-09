@@ -5,3 +5,6 @@ export default defineConfig({
   integrations: [icon()],
 });
 
+adapter: vercel({
+  imageService: true,
+});
