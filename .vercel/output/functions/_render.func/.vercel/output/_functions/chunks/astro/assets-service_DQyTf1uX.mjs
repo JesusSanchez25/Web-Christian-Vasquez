@@ -273,6 +273,12 @@ const AstroGlobNoMatch = {
   message: (globStr) => `\`Astro.glob(${globStr})\` did not return any matching files.`,
   hint: "Check the pattern for typos."
 };
+const MissingSharp = {
+  name: "MissingSharp",
+  title: "Could not find Sharp.",
+  message: "Could not find Sharp. Please install Sharp (`sharp`) manually into your project or migrate to another image service.",
+  hint: "See Sharp's installation instructions for more information: https://sharp.pixelplumbing.com/install. If you are not relying on `astro:assets` to optimize, transform, or process any images, you can configure a passthrough image service instead of installing Sharp. See https://docs.astro.build/en/reference/errors/missing-sharp for more information.\n\nSee https://docs.astro.build/en/guides/images/#default-image-service for more information on how to migrate to another image service."
+};
 const i18nNoLocaleFoundInPath = {
   name: "i18nNoLocaleFoundInPath",
   title: "The path doesn't contain any locale",
@@ -430,6 +436,13 @@ function isLocalService(service) {
     return false;
   }
   return "transform" in service;
+}
+function parseQuality(quality) {
+  let result = parseInt(quality);
+  if (Number.isNaN(result)) {
+    return quality;
+  }
+  return result;
 }
 const baseService = {
   propertiesToHash: DEFAULT_HASH_PROPS,
@@ -620,4 +633,68 @@ function getTargetDimensions(options) {
   };
 }
 
-export { AstroError as A, GetStaticPathsInvalidRouteParam as B, trimSlashes as C, DEFAULT_HASH_PROPS as D, EndpointDidNotReturnAResponse as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, NoMatchingStaticPathFound as H, InvalidComponentArgs as I, PrerenderDynamicEndpointPathCollide as J, ReservedSlotName as K, LocalsNotAnObject as L, MissingMediaQueryDirective as M, NoMatchingImport as N, OnlyResponseCanBeReturned as O, PageNumberParamNotFound as P, PrerenderClientAddressNotAvailable as Q, ResponseSentError as R, ClientAddressNotAvailable as S, StaticClientAddressNotAvailable as T, RewriteWithBodyUsed as U, AstroResponseHeadersReassigned as V, fileExtension as W, slash as X, prependForwardSlash as Y, removeTrailingForwardSlash as Z, AstroGlobUsedOutside as a, AstroGlobNoMatch as b, NoMatchingRenderer as c, NoClientOnlyHint as d, NoClientEntrypoint as e, baseService as f, NoImageMetadata as g, ExpectedImageOptions as h, ExpectedImage as i, ExpectedNotESMImage as j, isRemoteImage as k, isESMImportedImage as l, isLocalService as m, InvalidImageService as n, ImageMissingAlt as o, isRemotePath as p, isRemoteAllowed as q, resolveSrc as r, i18nNoLocaleFoundInPath as s, appendForwardSlash as t, joinPaths as u, MiddlewareNoDataOrNextCalled as v, MiddlewareNotAResponse as w, InvalidGetStaticPathsReturn as x, InvalidGetStaticPathsEntry as y, GetStaticPathsExpectedParams as z };
+let sharp;
+const qualityTable = {
+  low: 25,
+  mid: 50,
+  high: 80,
+  max: 100
+};
+async function loadSharp() {
+  let sharpImport;
+  try {
+    sharpImport = (await import('sharp')).default;
+  } catch {
+    throw new AstroError(MissingSharp);
+  }
+  sharpImport.cache(false);
+  return sharpImport;
+}
+const sharpService = {
+  validateOptions: baseService.validateOptions,
+  getURL: baseService.getURL,
+  parseURL: baseService.parseURL,
+  getHTMLAttributes: baseService.getHTMLAttributes,
+  getSrcSet: baseService.getSrcSet,
+  async transform(inputBuffer, transformOptions, config) {
+    if (!sharp) sharp = await loadSharp();
+    const transform = transformOptions;
+    if (transform.format === "svg") return { data: inputBuffer, format: "svg" };
+    const result = sharp(inputBuffer, {
+      failOnError: false,
+      pages: -1,
+      limitInputPixels: config.service.config.limitInputPixels
+    });
+    result.rotate();
+    if (transform.height && !transform.width) {
+      result.resize({ height: Math.round(transform.height) });
+    } else if (transform.width) {
+      result.resize({ width: Math.round(transform.width) });
+    }
+    if (transform.format) {
+      let quality = void 0;
+      if (transform.quality) {
+        const parsedQuality = parseQuality(transform.quality);
+        if (typeof parsedQuality === "number") {
+          quality = parsedQuality;
+        } else {
+          quality = transform.quality in qualityTable ? qualityTable[transform.quality] : void 0;
+        }
+      }
+      result.toFormat(transform.format, { quality });
+    }
+    const { data, info } = await result.toBuffer({ resolveWithObject: true });
+    return {
+      data,
+      format: info.format
+    };
+  }
+};
+var sharp_default = sharpService;
+
+const sharp$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: sharp_default
+}, Symbol.toStringTag, { value: 'Module' }));
+
+export { AstroError as A, trimSlashes as B, NoMatchingStaticPathFound as C, DEFAULT_HASH_PROPS as D, EndpointDidNotReturnAResponse as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, PrerenderDynamicEndpointPathCollide as H, InvalidComponentArgs as I, ReservedSlotName as J, PrerenderClientAddressNotAvailable as K, LocalsNotAnObject as L, MissingMediaQueryDirective as M, NoMatchingImport as N, OnlyResponseCanBeReturned as O, PageNumberParamNotFound as P, ClientAddressNotAvailable as Q, ResponseSentError as R, StaticClientAddressNotAvailable as S, RewriteWithBodyUsed as T, AstroResponseHeadersReassigned as U, fileExtension as V, slash as W, prependForwardSlash as X, removeTrailingForwardSlash as Y, sharp$1 as Z, AstroGlobUsedOutside as a, AstroGlobNoMatch as b, NoMatchingRenderer as c, NoClientOnlyHint as d, NoClientEntrypoint as e, NoImageMetadata as f, ExpectedImageOptions as g, ExpectedImage as h, ExpectedNotESMImage as i, isRemoteImage as j, isESMImportedImage as k, isLocalService as l, InvalidImageService as m, ImageMissingAlt as n, isRemotePath as o, isRemoteAllowed as p, i18nNoLocaleFoundInPath as q, resolveSrc as r, appendForwardSlash as s, joinPaths as t, MiddlewareNoDataOrNextCalled as u, MiddlewareNotAResponse as v, InvalidGetStaticPathsReturn as w, InvalidGetStaticPathsEntry as x, GetStaticPathsExpectedParams as y, GetStaticPathsInvalidRouteParam as z };

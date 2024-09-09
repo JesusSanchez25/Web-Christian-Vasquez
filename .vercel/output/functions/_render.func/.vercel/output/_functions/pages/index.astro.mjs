@@ -1,4 +1,4 @@
-import { c as createComponent, r as renderTemplate, a as renderSlot, b as renderHead, e as addAttribute, f as createAstro, m as maybeRenderHead, s as spreadAttributes, g as renderComponent, u as unescapeHTML, F as Fragment } from '../chunks/astro/server_Bq47BYMh.mjs';
+import { c as createComponent, r as renderTemplate, a as renderSlot, b as renderHead, e as addAttribute, f as createAstro, m as maybeRenderHead, s as spreadAttributes, g as renderComponent, u as unescapeHTML, F as Fragment } from '../chunks/astro/server_3XojiP7m.mjs';
 import 'kleur/colors';
 import 'clsx';
 /* empty css                                 */
@@ -17,7 +17,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate(_a$1 || (_a$1 = __template$1(['<script src="https://kit.fontawesome.com/448e949ae7.js" crossorigin="anonymous"><\/script> <html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"', '><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.		com" crossorigin><link href="https://fonts.googleapis.com/css2?		family=Inika:wght@400;700&display=swap" rel="stylesheet"><title>', "</title>", "</head> <body> ", " </body></html>"])), addAttribute(Astro2.generator, "content"), title, renderHead(), renderSlot($$result, $$slots["default"]));
 }, "C:/Users/magol/Web Christian Astro Final/src/layouts/Layout.astro", void 0);
 
-const icons = {"local":{"prefix":"local","lastModified":1725898598,"icons":{"close":{"body":"<path fill=\"#fff\" d=\"M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/>","width":24,"height":24},"menu":{"body":"<path fill=\"#fff\" fill-rule=\"evenodd\" d=\"M3 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1\" clip-rule=\"evenodd\"/>","width":20,"height":20}}}};
+const icons = {"local":{"prefix":"local","lastModified":1725898755,"icons":{"close":{"body":"<path fill=\"#fff\" d=\"M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\"/>","width":24,"height":24},"menu":{"body":"<path fill=\"#fff\" fill-rule=\"evenodd\" d=\"M3 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1m0 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1\" clip-rule=\"evenodd\"/>","width":20,"height":20}}}};
 
 const cache = /* @__PURE__ */ new WeakMap();
 
