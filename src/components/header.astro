@@ -1,0 +1,157 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<main>
+  <header id="header">
+    <div class="main-header">
+      <div class="flex-container">
+        <img src="public/WhatsApp Image 2024-07-01 at 22.30.59 (1).jpeg" alt="Foto Perfil">
+        <h3>CHRISTIAN <br>RÍOS</h3>
+      </div>
+      <div class="flex-container" id="navs-container">
+        <h3>INICIO</h3>
+        <h3>ESPECIALIDADES</h3>
+        <h3>PROYECTOS</h3>
+        <h3>CONTACTO</h3>
+        <h3>SOBRE MI</h3>
+      </div>
+      <div id="burger-menu-container">
+        <Icon name="menu" class="icon menu active" />
+        <Icon name="close" class="icon close" />
+      </div>
+    </div>
+    <div id="extended-header">
+      <h3>INICIO</h3>
+      <h3>ESPECIALIDADES</h3>
+      <h3>PROYECTOS</h3>
+      <h3>CONTACTO</h3>
+      <h3>SOBRE MI</h3>
+    </div>
+  </header>
+</main>
+
+<style>
+  header {
+    position: absolute;
+		z-index: 10;
+    max-width: 100vw;
+    max-height: 10vh;
+    display: flex;
+    background: #813232;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    transition: max-height 0.8s ease-out;
+    flex-wrap: wrap;
+    padding-block: 0.5rem;
+    overflow: hidden;
+  }
+
+  header.open {
+    max-height: 100vh;
+  }
+
+  .main-header {
+    height: 10vh;
+    width: 100%;
+    padding-inline: clamp(1rem, 2vw, 3rem);
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-container {
+    max-height: 10vh;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .flex-container img {
+    height: 8vh;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  #navs-container {
+    display: flex;
+    margin-left: auto;
+  }
+
+  #burger-menu-container {
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  .icon {
+    font-size: 2.7rem;
+  }
+
+  .icon.menu, .icon.close {
+    display: none;
+  }
+
+  .icon.active {
+    display: block;
+  }
+
+  #extended-header {
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-block: 1rem;
+    visibility: hidden;
+  }
+
+  #extended-header.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #extended-header h3 {
+    text-align: center;
+    width: max-content;
+  }
+
+  @media (max-width: 900px) {
+    #navs-container {
+      display: none;
+    }
+
+    .flex-container h3 {
+      font-size: clamp(26px,5.4vw, 40px);
+    }
+
+    .flex-container h3 br {
+      display: none;
+    }
+
+    #burger-menu-container {
+      display: block;
+    }
+  }
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('header');
+  const toggleButton = document.getElementById('burger-menu-container');
+  const iconBars = toggleButton.querySelector('.menu');
+  const iconX = toggleButton.querySelector('.close');
+  const extendedHeader = document.getElementById('extended-header');
+
+  toggleButton.addEventListener('click', () => {
+    requestAnimationFrame(() => {
+      header.classList.toggle('open');
+      extendedHeader.classList.toggle('open');
+      iconBars.classList.toggle('active');
+      iconX.classList.toggle('active');
+    });
+  });
+});
+</script>
