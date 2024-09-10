@@ -17,8 +17,8 @@ import { Icon } from 'astro-icon/components';
         <h3>SOBRE MI</h3>
       </div>
       <div id="burger-menu-container">
-        <!-- <Icon name="menu" class="icon menu active" />
-        <Icon name="close" class="icon close" /> -->
+        <Icon name="menu" class="icon menu active" />
+        <Icon name="close" class="icon close" />
       </div>
     </div>
     <div id="extended-header">
@@ -33,7 +33,7 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   header {
-    position: absolute;
+    position:fixed;
 		z-index: 10;
     max-width: 100vw;
     max-height: 10vh;
@@ -63,18 +63,25 @@ import { Icon } from 'astro-icon/components';
     display: flex;
     align-items: center;
     gap: 20px;
+
+    img {
+      height: 8vh;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
 
-  .flex-container img {
-    height: 8vh;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+
 
   #navs-container {
     display: flex;
     margin-left: auto;
+
+    h3 {
+      font-size: 0.8rem;
+    }
+
   }
 
   #burger-menu-container {
@@ -84,7 +91,7 @@ import { Icon } from 'astro-icon/components';
   }
 
   .icon {
-    font-size: 2.7rem;
+    font-size: 2.3rem;
   }
 
   .icon.menu, .icon.close {
@@ -118,14 +125,16 @@ import { Icon } from 'astro-icon/components';
     width: max-content;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 700px) {
     #navs-container {
       display: none;
     }
 
-    .flex-container h3 {
-      font-size: clamp(26px,5.4vw, 40px);
-    }
+    .flex-container {
+      h3 {
+        font-size: clamp(1.2rem, 3.3vw, 1.5rem);
+      }
+   }
 
     .flex-container h3 br {
       display: none;

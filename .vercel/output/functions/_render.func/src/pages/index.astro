@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/header.astro';
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+
+<Layout title="Welcome to Astro.">
+	<Header />
+	<div class="hero-container">
+		<img src="../public/piano-hero.jpeg" class="hero-image" alt="piano">
+		<div class="hero-text">
+			<h1 class="hero-main-text">CHRISTIAN RÍOS - <br>PRODUCTOR MUSICAL</h1>
+			<h3 class="hero-secondary-text">En búsqueda de experiencia laboral y de expandir mis conocimientos, siéntete libre de ponerte en contacto conmigo si te interesa. </h3>
+		</div>
+	</div>
+</Layout>
+
+<style>
+.hero-container {
+	position: relative;
+  height: 100svh;
+  width: 100svw;
+
+  .hero-image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    object-position: 30% 0px;
+  }
+
+  .hero-text {
+    position: relative;
+		width: max(450px,30vw);
+    z-index: 2;
+		padding-top: 30vh;
+		padding-left: 10vh;
+
+    .hero-main-text {
+      font-family: "Zilla Slab Highlight";
+      color: white;
+			margin: 0;
+			font-size: clamp(26px,4vw, 40px);
+    }
+
+    .hero-secondary-text {
+			margin-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+	.hero-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+  .hero-text {
+		width: min(80vw, 500px);
+		padding-left: 0vh;
+
+		.hero-main-text{
+			font-size: clamp(26px,5.4vw, 40px);
+		}
+
+		.hero-main-text br{
+			display: block;
+		}
+  }
+}
+
+}
+</style>
