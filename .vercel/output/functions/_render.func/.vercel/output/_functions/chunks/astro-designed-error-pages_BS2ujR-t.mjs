@@ -1,6 +1,6 @@
 import { parse } from 'devalue';
 import { escape } from 'html-escaper';
-import { D as DEFAULT_404_COMPONENT } from './astro/server_3XojiP7m.mjs';
+import { D as DEFAULT_404_COMPONENT } from './astro/server_dAJTAjD4.mjs';
 
 const ACTION_QUERY_PARAMS = {
   actionName: "_astroAction",

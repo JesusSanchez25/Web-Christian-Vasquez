@@ -2031,5 +2031,17 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   }
   return markHTMLString(output);
 }
+function defineStyleVars(defs) {
+  let output = "";
+  let arr = !Array.isArray(defs) ? [defs] : defs;
+  for (const vars of arr) {
+    for (const [key, value] of Object.entries(vars)) {
+      if (value || value === 0) {
+        output += `--${key}: ${value};`;
+      }
+    }
+  }
+  return markHTMLString(output);
+}
 
-export { ASTRO_VERSION as A, DEFAULT_404_COMPONENT as D, Fragment as F, ROUTE_TYPE_HEADER as R, renderSlot as a, renderHead as b, createComponent as c, decodeKey as d, addAttribute as e, createAstro as f, renderComponent as g, REROUTE_DIRECTIVE_HEADER as h, decryptString as i, createSlotValueFromString as j, renderSlotToString as k, renderJSX as l, maybeRenderHead as m, chunkToString as n, isRenderInstruction as o, clientLocalsSymbol as p, clientAddressSymbol as q, renderTemplate as r, spreadAttributes as s, responseSentSymbol as t, unescapeHTML as u, renderPage as v, REWRITE_DIRECTIVE_HEADER_KEY as w, REWRITE_DIRECTIVE_HEADER_VALUE as x, renderEndpoint as y, REROUTABLE_STATUS_CODES as z };
+export { ASTRO_VERSION as A, REROUTABLE_STATUS_CODES as B, DEFAULT_404_COMPONENT as D, Fragment as F, ROUTE_TYPE_HEADER as R, addAttribute as a, renderHead as b, createComponent as c, decodeKey as d, renderSlot as e, createAstro as f, renderComponent as g, defineStyleVars as h, REROUTE_DIRECTIVE_HEADER as i, decryptString as j, createSlotValueFromString as k, renderSlotToString as l, maybeRenderHead as m, renderJSX as n, chunkToString as o, isRenderInstruction as p, clientLocalsSymbol as q, renderTemplate as r, spreadAttributes as s, clientAddressSymbol as t, unescapeHTML as u, responseSentSymbol as v, renderPage as w, REWRITE_DIRECTIVE_HEADER_KEY as x, REWRITE_DIRECTIVE_HEADER_VALUE as y, renderEndpoint as z };
