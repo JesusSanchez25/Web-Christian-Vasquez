@@ -7,7 +7,7 @@ interface Props {
 const { imagen, titulo, body } = Astro.props;
 ---
 <div class="especialidad-container">
-  <div class="image-container">
+  <div class="image-container" style={{backgroundImage: `url(${imagen})`}}>
     <h1>{titulo}</h1>
   </div>
 
@@ -18,7 +18,7 @@ const { imagen, titulo, body } = Astro.props;
 </div>
 
 
-<style define:vars={{ '--background-image': `${imagen}` }}>
+<style>
   .especialidad-container {
     display: flex;
     flex-direction: column;
@@ -33,7 +33,6 @@ const { imagen, titulo, body } = Astro.props;
       padding: 1rem;
       display: flex;
       align-items: center;
-      background-image: url(var(--backgroundImage));
       background-size: cover;
       background-position: center;
       border-radius: 20px 20px 0 0;
