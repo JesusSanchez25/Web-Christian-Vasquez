@@ -24,95 +24,100 @@ import Especialidad from '../components/especialidad.astro';
 	<section class="seccion-especialidades">
 		<h1 class="main-tittle">Especialidades</h1>
 		<div class="especialidades-container">
-			<Especialidad imagen="public/piano-hero.jpeg" titulo="Productor musical" body="Lor" />
-			<Especialidad imagen="public/img-compositor.jpg" titulo="Compositor" body="prueba" />
-			<Especialidad imagen="public/img-profesor-musica.jpg" titulo="Profesor de música" body="prueba" />
-			<Especialidad imagen="public/img-interprete-piano.jpg" titulo="Intérprete de piano" body="prueba" />
+			<Especialidad imagen="public/piano-hero.jpeg" titulo="Productor musical" body="Soy productor especializado en la creación de música original y de alta calidad, con un enfoque en pop y Lofi-Hip Hop, buscando ofrecer producciones profesionales adaptadas a las necesidades de cada proyecto..." />
+			<Especialidad imagen="public/img-compositor.jpg" titulo="Compositor" body="Me especializo en la composición y arreglos musicales para una amplia variedad de géneros, desde música clásica hasta bandas sonoras, creando partituras profesionales en proyectos personalizados según las necesidades del cliente, asegurando un resultado creativo y de alta calidad." />
+			<Especialidad imagen="public/img-profesor-musica.jpg" titulo="Profesor de música" body="Como profesor de piano y lenguaje musical, ofrezco una formación integral que combina técnica, teoría y expresión personal. Cuentocon  mis 11 años de estudio y con clases adaptadas a cada estudiante, desde principiantes hasta nivel intermedio.  Mi objetivo es fomentar el amor por la música en un ambiente positivo y estimulante." />
+			<Especialidad imagen="public/img-interprete-piano.jpg" titulo="Intérprete de piano" body="Pianista con más de diez años de experiencia y gran  formación académica. Mi repertorio abarca desde obras clásicas hasta piezas contemporáneas. Ofrezco mis servicios para eventos como bodas, conciertos y celebraciones especiales" />
 		</div>
 	</section>
 
-
-</Layout>
-
-<style>
-				/* HERO  */
-.seccion-hero {
-	position: relative;
-  height: 100svh;
-  width: 100svw;
-
-  .hero-image {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: 1;
-    object-position: 30% 0px;
-  }
-
-  .hero-text {
-    position: relative;
-		width: max(450px,30vw);
-    z-index: 2;
-		padding-top: 30vh;
-		padding-left: 15vh;
-
-    .hero-main-text {
-      font-family: "Zilla Slab Highlight";
-      color: white;
-			margin: 0;
-			font-size: clamp(26px,4vw, 34px);
-    }
-
-    .hero-secondary-text {
-			margin-top: 20px;
-    }
-  }
-}
-
-@media (max-width: 900px) {
+	<style>
+		/* HERO  */
 	.seccion-hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+	position: relative;
+	height: 100svh;
+	width: 100svw;
 
-  .hero-text {
-		width: min(80vw, 500px);
-		padding-left: 0vh;
+	.hero-image {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: 1;
+	object-position: 30% 0px;
+	}
 
-		.hero-main-text{
-			font-size: clamp(26px,5.4vw, 40px);
-			text-align: center;
-		}
+	.hero-text {
+	position: relative;
+	width: max(450px,30vw);
+	z-index: 2;
+	padding-top: 30vh;
+	padding-left: 15vh;
 
-		.hero-main-text br{
-			display: block;
-		}
-  }
-}
+	.hero-main-text {
+		font-family: "Zilla Slab Highlight";
+		color: white;
+		margin: 0;
+		font-size: clamp(26px,4vw, 34px);
+	}
 
-}
+	.hero-secondary-text {
+		margin-top: 20px;
+	}
+	}
+	}
 
-		/* ESPECIALIDADES  */
-.seccion-especialidades {
+	@media (max-width: 900px) {
+	.seccion-hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.hero-text {
+	width: min(80vw, 500px);
+	padding-left: 0vh;
+
+	.hero-main-text{
+		font-size: clamp(26px,5.4vw, 40px);
+		text-align: center;
+	}
+
+	.hero-main-text br{
+		display: block;
+	}
+	}
+	}
+
+	}
+
+	/* ESPECIALIDADES  */
+	.seccion-especialidades {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100svw; 
 	height: 500px;
 
+	h1 {
+	margin: 0;
+	margin-top: 6rem;
+	}
 	.especialidades-container {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		width: 100%;
-		padding: 15vh;
-		box-sizing: border-box;
-		gap: 2rem;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+	padding-inline: min(15vh, 12vw);
+	padding-block: 3rem;
+	box-sizing: border-box;
+	gap: 2rem;
 
 	}	
-}
+	}
 
-@media (max-width: 700px){
-}
-</style>
+	@media (max-width: 700px){
+	}
+	</style>
+
+</Layout>
+
