@@ -7,7 +7,7 @@ interface Props {
 const { imagen, titulo, body } = Astro.props;
 ---
 <div class="especialidad-container">
-  <div class="image-container" style={{backgroundImage: `url(${imagen})`}}>
+  <div class="image-container" style={`background-image: url(${imagen})`}>
     <h1>{titulo}</h1>
   </div>
 
