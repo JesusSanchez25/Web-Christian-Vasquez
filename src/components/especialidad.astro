@@ -6,8 +6,9 @@ interface Props {
 }
 const { imagen, titulo, body } = Astro.props;
 ---
+
 <div class="especialidad-container">
-  <div class="image-container" style={`background-image: url(${imagen})`}>
+  <div class="image-container" data-imagen={imagen}>
     <h1>{titulo}</h1>
   </div>
 
@@ -17,13 +18,12 @@ const { imagen, titulo, body } = Astro.props;
   </div>
 </div>
 
-
 <style>
   .especialidad-container {
     display: flex;
     flex-direction: column;
     width: 47%;
-    background-color:aliceblue;
+    background-color: aliceblue;
     border-radius: 20px;
     box-shadow: 3px 3px 8px rgb(190, 190, 190);
 
@@ -39,11 +39,11 @@ const { imagen, titulo, body } = Astro.props;
 
       h1 {
         margin: 0;
-        font-family: Lexend;
+        font-family: Lexend, sans-serif;
         font-weight: 500;
         color: white;
         text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
-             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+                     1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
       }
     }
 
@@ -64,19 +64,33 @@ const { imagen, titulo, body } = Astro.props;
         cursor: pointer;
       }
     }
-
   }
 
-  @media (max-width: 700px)
-  {
+  @media (max-width: 700px) {
     .especialidad-container {
-    width: 100%;
+      width: 100%;
+
       .text-container {
         p {
           font-size: 0.7rem;
         }
       }
     }
-
   }
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar el elemento que contiene la clase 'image-container'
+    const imageContainers = document.querySelectorAll('.image-container');
+    
+    // Iterar sobre cada uno de los elementos y aplicar el estilo de fondo
+    imageContainers.forEach(container => {
+      // Obtener el valor del atributo data-imagen
+      const imagen = container.getAttribute('data-imagen');
+      
+      // Aplicar el estilo de background-image
+      container.style.backgroundImage = `url(${imagen})`;
+    });
+  });
+</script>
