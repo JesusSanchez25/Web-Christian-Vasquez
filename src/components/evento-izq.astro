@@ -1,0 +1,140 @@
+---
+interface Props {
+	titulo: string;
+	descripcion: string;
+	imagen: string;
+  href: string;
+}
+const { titulo, descripcion, imagen, href } = Astro.props;
+---
+
+
+<main class="main-container">
+  <div class="img-container">
+    <img src={imagen} alt="">
+  </div>
+
+  <div class="text-container">
+    <h2>{titulo}</h2>
+    <div class="img-container2">
+      <img src="public/WhatsApp Image 2024-07-01 at 22.30.58.jpeg" alt="">
+    </div>
+
+    <p>{descripcion}</p>
+    <a href={href}><button>Ver Más</button></a>
+  </div>
+</main>
+
+<style>
+  .main-container{
+    display: flex;
+    gap: min(8vh,12vw);
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: min(15vh,12vw);
+    padding-block: 3rem;
+
+    .img-container {
+      max-height: 45vh;
+      min-width: 30vw;
+      height: auto;
+
+      img{
+        border-radius: 21px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+    }
+
+    .img-container2{
+      display: none;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1 1 auto;
+      margin-inline: auto;
+      max-width: 800px;
+
+      h2{
+        text-align: center;
+        font-size: clamp(1.5rem,3.2vw,2.8rem);
+          margin: 0;
+          font-family: Lexend,sans-serif;
+          font-weight: 500;
+          color: rgb(255, 255, 255);
+          text-shadow: 2px 0 black,-2px 0 black,0 2px black,0 -2px black,1px 1px black,-1px -1px black,1px -1px black,-1px 1px black;
+
+      }
+
+        h1 {
+
+          }
+
+      p {
+        margin-block: 1rem;
+        font-size: clamp(12px,2vw,22px);
+      }
+
+      a{
+        width: max-content;
+        text-decoration: none;
+      }
+      button{
+        text-decoration: none;
+        padding-block: 0.6rem;
+        padding-inline: 1.1rem;
+        background: #C00F0C;
+        border-radius: 8px;
+        border: 1px solid white;
+        font-family: 'Inika';
+        font-weight: 700;
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
+        color: #FFFFFF;
+
+      }
+    }
+  }
+
+@media (max-width: 750px) {
+  .main-container{
+    box-sizing: border-box;
+    padding-inline: 3rem;
+    padding-block: 0rem;
+    max-height: none;
+    .img-container {
+      display: none;
+    }
+
+
+    .text-container{
+      gap: 1rem;
+
+      .img-container2 {
+        position: relative;
+        max-height: max(10rem, 30vw);
+        display: block;
+        width: 100%;
+
+        img{
+          border-radius: 21px;
+          width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+          object-position: 0% 40%;
+
+        }
+      }
+
+      p{
+        margin: 0;
+      }
+    }
+
+  }
+}
+</style>

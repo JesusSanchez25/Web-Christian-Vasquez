@@ -1,0 +1,36 @@
+---
+import EventoIzq from "./evento-izq.astro"
+import EventoDerc from "./evento-derc.astro"
+---
+
+<main class="main-container">
+  <h1 class="main-tittle">Eventos</h1>
+  <div class="eventos-container">
+    <EventoIzq titulo="Concierto de Ana Baro" descripcion = "Lorem ipsum dolor sit amet consectetur. Pellentesque  gravida turpis lorem potenti ac lacus egestas dictum. Placerat nulla pellentesque id scelerisque aliquet ac vivamus molestie elit." imagen = "public/WhatsApp Image 2024-07-01 at 22.32.14 (2).jpeg" href = "google.com"/>
+
+    <EventoDerc titulo="Concierto de Ana Baro" descripcion = "Lorem ipsum dolor sit amet consectetur. Pellentesque  gravida turpis lorem potenti ac lacus egestas dictum. Placerat nulla pellentesque id scelerisque aliquet ac vivamus molestie elit." imagen = "public/WhatsApp Image 2024-07-01 at 22.32.14 (2).jpeg" href = "google.com"/>
+
+    <EventoIzq titulo="Concierto de Ana Baro" descripcion = "Lorem ipsum dolor sit amet consectetur. Pellentesque  gravida turpis lorem potenti ac lacus egestas dictum. Placerat nulla pellentesque id scelerisque aliquet ac vivamus molestie elit." imagen = "public/WhatsApp Image 2024-07-01 at 22.32.14 (2).jpeg" href = "google.com"/>
+  </div>
+</main>
+
+<style>
+  .main-container{
+    margin-top: 6rem;
+
+    .eventos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 750px) {
+  .main-container{
+    .eventos-container{
+      gap: 5rem;
+    }
+  }
+
+  }
+</style>

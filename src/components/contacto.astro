@@ -1,0 +1,114 @@
+---
+---
+<head>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<main class="">
+	<h1 class="main-tittle">Contacto</h1>
+	<div class="mainContainer">
+		<h2>Enviar mensaje:</h2>
+		<div class="inputBox correo">
+			<input type="text" placeholder="Escribe tu nombre">
+		</div>
+		<div class="inputBox mensaje">
+			<input type="text" placeholder="Escribe tu nombre">
+		</div>
+		<button class="enviarMensaje">Enviar Mensaje</button>
+	</div>
+</main>
+
+<style>
+	.mainContainer{
+		display: flex;
+		box-sizing: border-box;
+		flex-direction: column;
+		gap: 2rem;
+		margin-inline: auto;
+		max-width: max(300px, 60vw);
+		padding: 2rem;
+		background: #FFFFFF;
+		box-shadow: 10px 10px 44.3px rgba(0, 0, 0, 0.25);
+		border-radius: 20px;
+
+		h2{
+			font-size: clamp(1.5rem,3.2vw,2.2rem) !important;
+			font-family: inika;
+			font-weight: 900;
+			font-size: clamp(1.5rem,3.2vw,2.8rem)
+		}
+
+		.inputBox {
+			width: 100%;
+			border: 1px solid rgba(113, 113, 113, 0.67);
+			border-radius: 5px;
+
+			input {
+				width: 100%;
+				padding: 10px;
+				font-size: 16px;
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				outline: none;
+				box-sizing: border-box;
+			}
+
+			input::placeholder {
+				color: #888;
+				font-style: italic;
+			}
+
+			input:focus {
+				border-radius: 5px;
+				border-color: #4CAF50;
+				box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+			}
+		}
+
+		button{
+		padding-block: 10px;
+		background: #C00F0C;
+		border: 1px solid #F3F2F2;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+		font-family: 'Inika';
+		font-weight: 700;
+		color: #FFFFFF;
+
+
+
+		}
+	}
+</style>
+
+<script type="text/javascript">
+	(function(){
+			emailjs.init("e7g-35rLH-zebWSWo");
+	})();
+
+	function enviarMensaje() {
+			var nombre = document.querySelector('.inputBox.correo input').value;
+			var mensaje = document.querySelector('.inputBox.mensaje input').value;
+
+			// Validar que los campos no estén vacíos
+			if (nombre === "" || mensaje === "") {
+					alert("Por favor, completa todos los campos.");
+					return;
+			}
+
+			// Parámetros para enviar el correo
+			var params = {
+					from_name: nombre,
+					message: mensaje,
+			};
+
+			// Llamada a EmailJS para enviar el correo
+			emailjs.send("service_tyeor1k","template_byqpmd3", params)
+			.then(function(response) {
+							alert("¡Mensaje enviado con éxito!");
+					}, function(error) {
+							alert("Error al enviar el mensaje. Por favor, inténtalo de nuevo.");
+					});
+
+	}
+</script>

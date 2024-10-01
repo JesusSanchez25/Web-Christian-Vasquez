@@ -2,10 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/header.astro';
 import Especialidad from '../components/especialidad.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Eventos from '../components/s-eventos.astro';
-import Contacto from '../components/contacto.astro';
-
 ---
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +11,6 @@ import Contacto from '../components/contacto.astro';
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
 <Layout title="Christian Rios">
-	<Header />
 	 <!-- HERO -->
 	<section class="seccion-hero">
 		<img src="/piano-hero.jpeg" class="hero-image" alt="piano">
@@ -30,14 +25,11 @@ import Contacto from '../components/contacto.astro';
 		<div class="especialidades-container">
 			<Especialidad imagen="img-productor-musical.jpg" titulo="Productor musical" body="Soy productor especializado en la creación de música original y de alta calidad, con un enfoque en pop y Lofi-Hip Hop, buscando ofrecer producciones profesionales adaptadas a las necesidades de cada proyecto..." />
 			<Especialidad imagen="img-compositor.jpg" titulo="Compositor" body="Me especializo en la composición y arreglos musicales para una amplia variedad de géneros, desde música clásica hasta bandas sonoras, creando partituras profesionales en proyectos personalizados según las necesidades del cliente, asegurando un resultado creativo y de alta calidad." />
-			<Especialidad imagen="img-profesor-musica.jpg" titulo="Profesor de música" body="Como profesor de piano y lenguaje musical, ofrezco una formación integral que combina técnica, teoría y expresión personal. Cuento con  mis 11 años de estudio y con clases adaptadas a cada estudiante, desde principiantes hasta nivel intermedio.  Mi objetivo es fomentar el amor por la música en un ambiente positivo y estimulante." />
+			<Especialidad imagen="img-profesor-musica.jpg" titulo="Profesor de música" body="Como profesor de piano y lenguaje musical, ofrezco una formación integral que combina técnica, teoría y expresión personal. Cuentocon  mis 11 años de estudio y con clases adaptadas a cada estudiante, desde principiantes hasta nivel intermedio.  Mi objetivo es fomentar el amor por la música en un ambiente positivo y estimulante." />
 			<Especialidad imagen="img-interprete-piano.jpg" titulo="Intérprete de piano" body="Pianista con más de diez años de experiencia y gran  formación académica. Mi repertorio abarca desde obras clásicas hasta piezas contemporáneas. Ofrezco mis servicios para eventos como bodas, conciertos y celebraciones especiales" />
 		</div>
 	</section>
 
-	<Portfolio />
-	<Eventos />
-	<Contacto />
 	<style>
 		/* HERO  */
 	.seccion-hero {
@@ -60,6 +52,13 @@ import Contacto from '../components/contacto.astro';
 	z-index: 2;
 	padding-top: 30vh;
 	padding-left: 15vh;
+
+	.hero-main-text {
+		font-family: "Zilla Slab Highlight";
+		color: white;
+		margin: 0;
+		font-size: 2.2rem;
+	}
 
 	.hero-secondary-text {
 		margin-top: 20px;
@@ -95,12 +94,12 @@ import Contacto from '../components/contacto.astro';
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100svw;
+	width: 100svw; 
+	height: 500px;
 
 	h1 {
 	margin: 0;
 	margin-top: 6rem;
-	font-size: clamp(2.5rem, 7vw, 3.2rem);
 	}
 	.especialidades-container {
 	display: flex;
@@ -112,7 +111,7 @@ import Contacto from '../components/contacto.astro';
 	box-sizing: border-box;
 	gap: 2rem;
 
-	}
+	}	
 	}
 
 

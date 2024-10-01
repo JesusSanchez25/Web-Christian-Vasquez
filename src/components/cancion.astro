@@ -1,0 +1,99 @@
+--- 
+import { Icon } from 'astro-icon/components'; 
+
+interface Props {
+  nombre: string;
+  generos: string;
+  imagen: string;
+  cancion: string;
+}
+const { nombre, generos, imagen, cancion } = Astro.props;
+---
+
+<div class="main-container">
+  <img src={imagen}alt="portada" />
+  <div class="song-text">
+    <h2>{nombre}</h2>
+    <p>{generos}</p>
+  </div>
+  <Icon data-cancion={cancion} name="play-button" id='playButton' class="icon" />
+  <Icon data-cancion={cancion} name="stop-button" id='stopButton' class="icon" style="display: none"/>
+</div>
+
+<style>
+.main-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    gap: 1.3rem;
+    height: 4.8rem;
+    background: rgba(255, 99, 99, 0.6);
+
+
+    img {
+      aspect-ratio: 1 / 1;
+      height: 100%;
+      border-radius: 2px;
+      object-fit: cover; 
+      max-height: 100%;
+    }
+  
+
+    .song-text {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-left: -5px;
+      font-size: clamp(12px, 2vw, 20px);
+
+      h2 {
+        font-size: clamp(16px, 3vw, 24px);
+        margin: 0;
+      }
+
+      p {
+        font-size: clamp(12px, 2vw, 18px);
+        margin: 0;
+      }
+    }
+
+    .icon{
+      min-width: 1em;
+      min-height: 1em;
+      margin-left: auto;
+      font-size: 2.5rem;
+    }
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const playButton = document.getElementById('playButton');
+    const stopButton = document.getElementById('stopButton');
+    const audio = playButton.getAttribute('data-cancion');
+    console.log(audio);
+    const audio2 = new Audio(audio);
+    console.log(audio2);
+
+    playButton.addEventListener('click', function () {
+      audio2.play();
+      playButton.setAttribute('name', 'menu');
+      this.style.display = "none";
+      stopButton.style.display = "block";
+    });
+
+    stopButton.addEventListener('click', function () {
+        audio2.pause();
+        audio2.currentTime = 0;
+        this.style.display = "none";
+        playButton.style.display = "block";
+    });
+
+  });
+</script>
